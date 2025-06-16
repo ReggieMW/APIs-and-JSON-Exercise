@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            //RonVSKanyeAPI.Convo();
+            RonVSKanyeAPI.Convo();
             OpenWeatherMapAPI.GetUserTemp();
         }
     }

@@ -11,16 +11,16 @@ namespace APIsAndJSON
     {
         public static void GetUserTemp()
         {
-            var client = new HttpClient();
-            var appsettingsText = File.ReadAllText("appsettings.json");
+            var jsonText = File.ReadAllText("appsettings.json");
 
-            var apiKey = "d230c0619c81262007a55421f21d88"; 
+            var apiKey = JObject.Parse(jsonText).GetValue("key").ToString();
             
             Console.WriteLine("Enter Zip:");
             var zip = Console.ReadLine();
 
-            var url = $"https://api.openweathermap.org/data/2.5/weather?zip={zip}&appid={apiKey}";
+            var url = $"https://api.openweathermap.org/data/2.5/weather?zip={zip}&appid={apiKey}&units=imperial";
             
+            var client = new HttpClient();
 
             var response = client.GetStringAsync(url).Result;
             
